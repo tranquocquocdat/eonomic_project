@@ -6,7 +6,7 @@ const app = express();
 app.use(morgan("dev"));
 // app.use(morgan("compile"));
 // app.use(morgan('common'));
-// app.use(helmet());
+app.use(helmet());
 app.use(compression());
 app.get("/doc", function(req, res, next) {
     const compress = "hell dattran"
@@ -15,5 +15,7 @@ app.get("/doc", function(req, res, next) {
         metadata: compress.repeat(1000000)
     })
 });
+
+const mongoose= require('./dbs/init.mongodb');
 
 module.exports = app;
